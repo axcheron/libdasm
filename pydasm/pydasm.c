@@ -582,6 +582,7 @@ PyObject *pydasm_get_mnemonic_string(PyObject *self, PyObject *args)
     get_mnemonic_string(&insn, format, data, INSTRUCTION_STR_BUFFER_LENGTH);
       
     pStr = PyString_FromStringAndSize(data, strlen(data));
+    free(insn.ptr);
     free(data);
     
     return pStr;
@@ -651,6 +652,7 @@ PyObject *pydasm_get_operand_string(PyObject *self, PyObject *args)
     }
     
     pStr = PyString_FromStringAndSize(data, strlen(data));
+    free(insn.ptr);
     free(data);
     
     return pStr;
